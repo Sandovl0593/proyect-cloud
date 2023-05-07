@@ -1,0 +1,13 @@
+cryptography
+Flask
+flask-mysql
+flask-Cors
+flask-RESTful
+flask-SQLAlchemy
+mysql-connector-python
+peewee
+pymysql
+python-dotenv
+regex
+requests
+urllib3

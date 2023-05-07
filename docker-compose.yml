@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  microservice1:
+     build: ./microservice1
+     image: adrsandoval/microservice1
+     ports:
+       - 8000:8000
+
+  microservice2:
+     build: ./microservice2
+     image: adrsandoval/microservice2
+     ports:
+       - 8001:8000
+
+  microservice3:
+     build: ./microservice3
+     image: adrsandoval/microservice3
+     ports:
+       - 8081:8000
+
+  web:
+     build: ./web
+     image: adrsandoval/proy-web
+     ports:
+       - 8080:80
