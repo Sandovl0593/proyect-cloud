@@ -5,7 +5,6 @@ from flaskext.mysql import MySQL
 
 # Create instance of Flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 cors = CORS(app, resources={r"/utecshop/*": {"origins": "*"}})
 
 #Create an instance of MySQL and Flask RESTful API

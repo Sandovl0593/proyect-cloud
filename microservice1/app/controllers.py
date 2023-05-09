@@ -1,7 +1,10 @@
-from app import app, db
+from app import db
 from flask import jsonify, request
 from flask_restful import Resource
 
+class Index(Resource):
+    def get(self):
+        return "Init microservice"
 
 class UserList(Resource):
     #  en vue se llama con fetch() a /users .... 
@@ -11,8 +14,9 @@ class UserList(Resource):
         try:
             conn = db.connect()
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM usuario")
+            cursor.execute("SELECT * FROM proyecto.usuario")
             rows = cursor.fetchall()
+            print(rows)
             response = jsonify(rows)
 
         except Exception:
@@ -32,25 +36,25 @@ class UserList(Resource):
             conn = db.connect()
             cursor = conn.cursor()
             
-            response = request.get_json()
-            nombre = response['nombre']
-            telefono = response['telefono']
-            direccion = response['direccion']
-            usuario = response['usuario']
-            email = response['email']
-            contrasenha = response['contrasenha']
+            new = request.get_json()
+            nombre = new['nombre']
+            telefono = new['telefono']
+            direccion = new['direccion']
+            nombre_usuario = new['nombre_usuario']
+            email = new['email']
+            contrasenha = new['contrasenha']
 
-            query = """INSERT INTO usuario(nombre, telefono, direccion, usuario, email, contrasenha) 
+            query = """INSERT INTO proyecto.usuario(name, phone, address, username, email, password) 
                        VALUES(%s, %s, %s, %s, %s, %s)"""
             
-            cursor.execute(query, (nombre, telefono, direccion, usuario, email, contrasenha))
+            cursor.execute(query, (nombre, telefono, direccion, nombre_usuario, email, contrasenha))
             conn.commit()
 
             response = jsonify(message='Usuario added successfully.', id=cursor.lastrowid)
             response.status_code = 200
 
         except Exception:
-            response = jsonify(message='Failed to add usuario.')         
+            response = jsonify(message='Failed to add usuario.')
             response.status_code = 400
 
         finally:
@@ -64,7 +68,7 @@ class User(Resource):
         try:
             conn = db.connect()
             cursor = conn.cursor()
-            cursor.execute('SELECT * FROM usuario WHERE username = %s', username_)
+            cursor.execute('SELECT * FROM proyecto.usuario WHERE username = %s', username_)
             rows = cursor.fetchall()
             return jsonify(rows)
 
@@ -81,18 +85,16 @@ class User(Resource):
             conn = db.connect()
             cursor = conn.cursor()
 
-            response = request.get_json()
-            nombre = response['nombre']
-            telefono = response['telefono']
-            direccion = response['direccion']
-            email = response['email']
-            contrasenha = response['contrasenha']
+            new = request.get_json()
+            telefono = new['telefono']
+            direccion = new['direccion']
+            email = new['email']
+            contrasenha = new['contrasenha']
 
-            query = """UPDATE usuario 
-                    SET nombre=%s, telefono=%s, direccion=%s,  
-                    usuario=%s, email=%s, contrasenha=%s"""
+            query = """UPDATE proyecto.usuario 
+                    SET phone=%s, address=%s, username=%s, email=%s, password=%s"""
             
-            cursor.execute(query, (nombre, telefono, direccion, username_, email, contrasenha))
+            cursor.execute(query, (telefono, direccion, username_, email, contrasenha))
             conn.commit()
 
             response = jsonify('Usuario updated successfully.')
@@ -111,7 +113,7 @@ class User(Resource):
             conn = db.connect()
             cursor = conn.cursor()
 
-            cursor.execute('DELETE FROM usuario WHERE username = %s', username_)
+            cursor.execute('DELETE FROM proyecto.usuario WHERE username = %s', username_)
             conn.commit()
             response = jsonify('Usuario deleted successfully.')
             response.status_code = 200
