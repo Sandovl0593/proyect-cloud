@@ -6,17 +6,14 @@ class Index(Resource):
     def get(self):
         return "Init microservice"
 
+
 class UserList(Resource):
-    #  en vue se llama con fetch() a /users .... 
-    #  y retorna un json con los datos y 
-    #  de ahi se visualiza en la web
     def get(self):
         try:
             conn = db.connect()
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM proyecto.usuario")
             rows = cursor.fetchall()
-            print(rows)
             response = jsonify(rows)
 
         except Exception:
@@ -26,42 +23,7 @@ class UserList(Resource):
             cursor.close()
             conn.close()
             return response
-    
-    #  en el Vue se llama con fetch() a /user? 
-    #  con parametros del form mientras realiza el
-    #  ejecucion en el backend y
-    #  al final visualiza en la web la confirmacion
-    def post(self):
-        try:
-            conn = db.connect()
-            cursor = conn.cursor()
-            
-            new = request.get_json()
-            nombre = new['nombre']
-            telefono = new['telefono']
-            direccion = new['direccion']
-            nombre_usuario = new['nombre_usuario']
-            email = new['email']
-            contrasenha = new['contrasenha']
 
-            query = """INSERT INTO proyecto.usuario(name, phone, address, username, email, password) 
-                       VALUES(%s, %s, %s, %s, %s, %s)"""
-            
-            cursor.execute(query, (nombre, telefono, direccion, nombre_usuario, email, contrasenha))
-            conn.commit()
-
-            response = jsonify(message='Usuario added successfully.', id=cursor.lastrowid)
-            response.status_code = 200
-
-        except Exception:
-            response = jsonify(message='Failed to add usuario.')
-            response.status_code = 400
-
-        finally:
-            cursor.close()
-            conn.close()
-            return response
-            
 
 class User(Resource):
     def get(self, username_):
@@ -92,9 +54,9 @@ class User(Resource):
             contrasenha = new['contrasenha']
 
             query = """UPDATE proyecto.usuario 
-                    SET phone=%s, address=%s, username=%s, email=%s, password=%s"""
+                    SET username=%s, phone=%s, address=%s, email=%s, password=%s"""
             
-            cursor.execute(query, (telefono, direccion, username_, email, contrasenha))
+            cursor.execute(query, (username_, telefono, direccion, email, contrasenha))
             conn.commit()
 
             response = jsonify('Usuario updated successfully.')
@@ -119,9 +81,69 @@ class User(Resource):
             response.status_code = 200
 
         except Exception:
-            response = jsonify('Failed to delete usuario.')         
+            response = jsonify('Failed to delete usuario.')
             response.status_code = 400
         finally:
             cursor.close()
             conn.close()    
             return(response)
+
+class Register(Resource):
+    def post(self):
+        try:
+            conn = db.connect()
+            cursor = conn.cursor()
+            
+            new = request.get_json()
+            nombre_usuario = new['nombre_usuario']
+            nombre = new['nombre']
+            telefono = new['telefono']
+            direccion = new['direccion']
+            email = new['email']
+            contrasenha = new['contrasenha']
+
+            query = """INSERT INTO proyecto.usuario(username, name, phone, address, email, password) 
+                       VALUES(%s, %s, %s, %s, %s, %s)"""
+            
+            cursor.execute(query, (nombre_usuario, nombre, telefono, direccion, email, contrasenha))
+            conn.commit()
+
+            response = jsonify(message='Usuario added successfully.', id=cursor.lastrowid)
+            response.status_code = 200
+
+        except Exception:
+            response = jsonify(message='Failed to add usuario.')
+            response.status_code = 400
+
+        finally:
+            cursor.close()
+            conn.close()
+            return response
+        
+class Login(Resource):
+    def post(self):
+        try:
+            conn = db.connect()
+            cursor = conn.cursor()
+            
+            usuario_v = request.get_json()
+            l_usuario = usuario_v['nombre_usuario']
+            l_contrasenha = usuario_v['contrasenha']
+            
+            query = """SELECT * FROM proyecto.usuario WHERE username=%s AND password=%s"""
+
+            cursor.execute(query, (l_usuario, l_contrasenha))
+            
+            if (cursor.fetchall()):
+                response = jsonify({"nombre_usuario":l_usuario, "contrasenha": l_contrasenha})
+            else:
+                response = jsonify(message='Usuario does not exist')
+        
+        except Exception:
+            response = jsonify(message='Failed to add usuario.')
+            response.status_code = 400
+
+        finally:
+            cursor.close()
+            conn.close()
+            return response
