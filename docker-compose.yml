@@ -11,13 +11,13 @@ services:
      build: ./microservice2
      image: adrsandoval/microservice2
      ports:
-       - 8001:8000
+       - 8001:8001
 
   microservice3:
      build: ./microservice3
      image: adrsandoval/microservice3
      ports:
-       - 8081:8000
+       - 8081:8081
 
   web:
      build: ./web

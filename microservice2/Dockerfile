@@ -8,7 +8,7 @@ RUN pip3 install flask-mysql
 RUN pip3 install Flask-RESTful
 ENV FLASK_APP=server.py
 ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_RUN_PORT=8000
+ENV FLASK_RUN_PORT=8001
 
 COPY . .
 
