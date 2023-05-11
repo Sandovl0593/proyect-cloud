@@ -3,7 +3,7 @@
       <table>
         <tr>
           <th>Codigo</th>
-          <th>Nombre</th>
+          <th>nombre</th>
           <th>Precio</th>
           <th>Marca</th>
           <th>Categoria</th>
@@ -13,7 +13,7 @@
           <td>{{producto.nombre}}</td>
           <td>{{producto.precio}}</td>
           <td>{{producto.marca}}</td>
-          <td>{{producto.tipo}}</td>
+          <td>{{producto.categoria}}</td>
         </tr>
       </table>
     </div>
@@ -34,7 +34,7 @@
     methods: {
       async obtener_productos(){
         let usuario_p = {usuario: this.$store.state.mi_usuario}
-        await fetch('http://127.0.0.1:5000/utecshop/vender', {
+        await fetch('http://127.0.0.1:8081/utecshop/vender', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

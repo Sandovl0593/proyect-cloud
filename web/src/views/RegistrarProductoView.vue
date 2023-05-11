@@ -54,7 +54,7 @@
       async registrar_producto(){
         let n_producto = {codigo: this.codigo, usuario: this.usuario_nombre, nombre: this.nombre,
           precio: this.precio, marca: this.marca, categoria: this.tipo}
-        await fetch('http://127.0.0.1:5000/utecshop/registrar_producto', {
+        await fetch('http://127.0.0.1:8001/utecshop/registrar_producto', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

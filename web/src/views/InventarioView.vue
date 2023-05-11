@@ -29,7 +29,7 @@
     methods: {
       async obtener_compras(){
         let usuario_c = {usuario: this.$store.state.mi_usuario}
-        await fetch('http://127.0.0.1:5000/utecshop/inventario', {
+        await fetch('http://127.0.0.1:8081/utecshop/inventario', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

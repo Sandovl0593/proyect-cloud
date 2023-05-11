@@ -5,18 +5,18 @@ from flaskext.mysql import MySQL
 
 # Create instance of Flask app
 app = Flask(__name__)
-cors = CORS(app, resources={r"/utecshop/*": {"origins": "*"}})
+CORS(app, resources={r"/utecshop/*": {"origins": "*"}})
 
 #Create an instance of MySQL and Flask RESTful API
 db = MySQL()
 api = Api(app)
 
 #Set database credentials in config.
-app.config['MYSQL_DATABASE_USER'] = ''
-app.config['MYSQL_DATABASE_PASSWORD'] = ''
-app.config['MYSQL_DATABASE_DB'] = ''
-app.config['MYSQL_DATABASE_HOST'] = ''
-app.config['MYSQL_DATABASE_PORT'] = 0
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'utec'
+app.config['MYSQL_DATABASE_DB'] = 'proyecto'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_PORT'] = 3306
 
 #Initialize the MySQL extension
 db.init_app(app)

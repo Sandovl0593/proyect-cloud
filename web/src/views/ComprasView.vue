@@ -3,7 +3,7 @@
       <table>
         <tr>
           <th>Codigo</th>
-          <th>Usuario</th>
+          <th>Vendedor</th>
           <th>Nombre</th>
           <th>Precio</th>
           <th>Marca</th>
@@ -35,8 +35,10 @@
     },
     methods: {
       async obtener_productos(){
-        let usuario_p = {usuario: this.$store.state.mi_usuario}
-        await fetch('http://127.0.0.1:5000/utecshop/comprar', {
+        let usuario_p = {
+          usuario: this.$store.state.mi_usuario
+        }
+        await fetch('http://127.0.0.1:8001/utecshop/tienda', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
@@ -45,15 +47,18 @@
         }).then((resp)=> resp.json()).then((datos)=> this.productos = datos)
       },
       async comprar(codigo_p, usuario_v){
-        let n_compra = {codigo_producto: codigo_p, usuario_comprador: this.$store.state.mi_usuario,
-          usuario_vendedor: usuario_v}
-        await fetch('http://127.0.0.1:5000/utecshop/registrar_compra', {
+        let n_compra = {
+            codigo_producto: codigo_p, 
+            usuario_comprador: this.$store.state.mi_usuario,
+            usuario_vendedor: usuario_v
+        }
+        await fetch('http://127.0.0.1:8001/utecshop/registrar_compra', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
           },
           body: JSON.stringify(n_compra)
-        }).then(()=>alert("producto comprado"))
+        })
       }
     },
     created(){

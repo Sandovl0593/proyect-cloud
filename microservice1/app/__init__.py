@@ -5,7 +5,7 @@ from flaskext.mysql import MySQL
 
 # Create instance of Flask app
 app = Flask(__name__)
-cors = CORS(app, resources={r"/utecshop/*": {"origins": "*"}})
+CORS(app, resources={r"/utecshop/*": {"origins": "*"}})
 
 #Create an instance of MySQL and Flask RESTful API
 db = MySQL()

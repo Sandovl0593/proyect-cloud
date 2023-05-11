@@ -36,7 +36,7 @@ export default {
     },
     async verificar_usuario(){
       let v_usuario = {nombre_usuario: this.nombre_usuario, contrasenha: this.contrasenha}
-      await fetch('http://127.0.0.1:5000/utecshop/login', {
+      await fetch('http://127.0.0.1:8000/utecshop/login', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

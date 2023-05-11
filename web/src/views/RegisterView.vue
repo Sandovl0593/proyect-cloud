@@ -62,7 +62,7 @@
       async registrar_usuario(){
         let n_usuario =  {nombre_usuario: this.nombre_usuario, nombre: this.nombre, telefono: this.telefono, direccion: this.direccion,
            email: this.email, contrasenha: this.contrasenha}
-        await fetch('http://127.0.0.1:5000/utecshop/register', {
+        await fetch('http://127.0.0.1:8000/utecshop/register', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

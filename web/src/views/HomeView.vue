@@ -8,8 +8,8 @@
     </div>
     <nav>
       <router-link to="/compras">Comprar</router-link> |
-      <router-link to="/ventas">Vender</router-link> |
-      <router-link to="/inventario">Inventario</router-link> <br>
+      <router-link to="/ventas">Inventario</router-link> |
+      <router-link to="/inventario">Compras</router-link> <br>
       <router-link to="/">Logout</router-link>
     </nav>
   </template>
@@ -24,7 +24,7 @@
     },
     methods: {
       async obtener_usuarios(){
-        await fetch('http://127.0.0.1:5000/utecshop/usuarios')
+        await fetch('http://127.0.0.1:8000/utecshop/usuarios')
             .then((resp) => resp.json()).then((datos) => this.usuarios = datos)
       }
     },

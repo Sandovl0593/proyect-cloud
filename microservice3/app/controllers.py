@@ -1,4 +1,4 @@
-from app import app, db
+from app import db
 from flask import jsonify, request
 from flask_restful import Resource
 
@@ -16,8 +16,7 @@ class Vender(Resource):
 
             productos_d = []
             for i in productos_l:
-                producto_d = {"codigo": i[0], "nombre": i[1],
-                              "precio": i[2], "marca": i[3], "tipo": i[4]}
+                producto_d = {"codigo": i[0], "nombre": i[2], "precio": i[3], "marca": i[4], "categoria": i[5]}
                 productos_d.append(producto_d)
 
             response = jsonify(productos_d)
@@ -42,9 +41,7 @@ class Inventario(Resource):
             compra_u = request.get_json()
             usuario_l = compra_u['usuario']
 
-            query = """SELECT codigo_c, codigo_p, usuario_c, usuario_v
-                       FROM proyecto.compra
-                       WHERE usuario_c = %s"""
+            query = "SELECT * FROM proyecto.compra WHERE usuario_c = %s"
 
             cursor.execute(query, (usuario_l,))
             compras_l = cursor.fetchall()

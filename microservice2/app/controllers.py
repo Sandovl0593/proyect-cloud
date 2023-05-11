@@ -1,7 +1,8 @@
-from app import app, db
+from app import db
 from flask import jsonify, request
 from flask_restful import Resource
-
+from random import randint, choice
+from string import ascii_uppercase
 
 class RegistrarCompra(Resource):
     def post(self):
@@ -10,14 +11,19 @@ class RegistrarCompra(Resource):
             cursor = conn.cursor()
 
             nueva_compra = request.get_json()
+            codigo_c = str(randint(1,1000))+choice([i for i in ascii_uppercase])
+            
             codigo_p = nueva_compra['codigo_producto']
             comprador = nueva_compra['usuario_comprador']
             vendedor = nueva_compra['usuario_vendedor']
 
-            query = """INSERT INTO proyecto.compra(codigo_p, usuario_c, usuario_v)
-                       VALUES(%s, %s, %s)"""
+            query1 = "UPDATE proyecto.producto SET usuario_p=%s WHERE codigo_p=%s"
+            cursor.execute(query1, (comprador, codigo_p))
+            conn.commit()
 
-            cursor.execute(query, (codigo_p, comprador, vendedor))
+            query2 = """INSERT INTO proyecto.compra(codigo_c, codigo_p, usuario_c, usuario_v)
+                       VALUES(%s, %s, %s, %s)"""
+            cursor.execute(query2, (codigo_c, codigo_p, comprador, vendedor))
             conn.commit()
 
             response = jsonify(message='Compra agregada exitosamente.', id=cursor.lastrowid)
@@ -33,17 +39,18 @@ class RegistrarCompra(Resource):
             return response
 
 
-class Comprar(Resource):
+class Tienda(Resource):
     def post(self):
         try:
             conn = db.connect()
             cursor = conn.cursor()
+
+            usuario_l = request.get_json()['usuario']
             
-            producto_u = request.get_json()
-            usuario_l = producto_u['usuario']
             query = "SELECT * FROM proyecto.producto WHERE usuario_p != %s"
             cursor.execute(query, (usuario_l,))
             productos_nl = cursor.fetchall()
+ 
             productos_d = []
             for i in productos_nl:
                 producto_d = {"codigo": i[0], "usuario_nombre": i[1], "nombre": i[2],
