@@ -20,8 +20,8 @@ const router = createRouter({
       component: () => import('../views/RegisterView.vue')
     },
     {
-      path: '/ventas',
-      name: 'ventas',
+      path: '/productos',
+      name: 'productos',
       component: () => import('../views/VentasView.vue')
     },
     {
@@ -30,8 +30,8 @@ const router = createRouter({
       component: () => import('../views/RegistrarProductoView.vue')
     },
     {
-      path: '/compras',
-      name: 'compras',
+      path: '/comprar',
+      name: 'comprar',
       component: () => import('../views/ComprasView.vue')
     },
     {

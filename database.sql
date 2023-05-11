@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS producto (
 );
 
 CREATE TABLE IF NOT EXISTS compra (
-    codigo_c INTEGER PRIMARY KEY NOT NULL, 
+    codigo_c VARCHAR(6) PRIMARY KEY NOT NULL, 
     codigo_p VARCHAR(6) NOT NULL, 
     usuario_c VARCHAR(80) NOT NULL, 
     usuario_v VARCHAR(80) NOT NULL

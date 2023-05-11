@@ -11,7 +11,7 @@
         <tr v-for="producto of productos" v-bind:key="producto">
           <td>{{producto.codigo}}</td>
           <td>{{producto.nombre}}</td>
-          <td>{{producto.precio}}</td>
+          <td>S/ {{producto.precio}}</td>
           <td>{{producto.marca}}</td>
           <td>{{producto.categoria}}</td>
         </tr>
@@ -34,7 +34,7 @@
     methods: {
       async obtener_productos(){
         let usuario_p = {usuario: this.$store.state.mi_usuario}
-        await fetch('http://127.0.0.1:8081/utecshop/vender', {
+        await fetch('http://127.0.0.1:8081/utecshop/productos ', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

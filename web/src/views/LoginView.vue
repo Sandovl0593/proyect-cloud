@@ -4,7 +4,7 @@
     <input type="text" v-bind:value="nombre_usuario" v-on:input="verificar_nombre"><br>
     <br>
     <label>Contraseña</label>
-    <input type="text" v-bind:value="contrasenha" v-on:input="verificar_contrasenha"><br>
+    <input type="password" v-bind:value="contrasenha" v-on:input="verificar_contrasenha"><br>
     <br>
     <button v-on:click="casa">Login</button>
   </div>

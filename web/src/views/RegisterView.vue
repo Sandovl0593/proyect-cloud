@@ -16,7 +16,7 @@
       <input type="text" v-bind:value="email" v-on:input="registrar_email"><br>
       <br>
       <label>Contrasenha</label>
-      <input type="text" v-bind:value="contrasenha" v-on:input="registrar_contrasenha"><br>
+      <input type="password" v-bind:value="contrasenha" v-on:input="registrar_contrasenha"><br>
       <br>
       <button v-on:click="registrar_usuario">Registrar</button>
     </div>

@@ -59,6 +59,8 @@
           },
           body: JSON.stringify(n_compra)
         })
+        alert("Producto comprado");
+        this.$router.push('/productos');
       }
     },
     created(){

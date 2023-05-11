@@ -1,8 +1,7 @@
 from app import db
 from flask import jsonify, request
 from flask_restful import Resource
-from random import randint, choice
-from string import ascii_uppercase
+from random import randint
 
 class RegistrarCompra(Resource):
     def post(self):
@@ -11,7 +10,7 @@ class RegistrarCompra(Resource):
             cursor = conn.cursor()
 
             nueva_compra = request.get_json()
-            codigo_c = str(randint(1,1000))+choice([i for i in ascii_uppercase])
+            codigo_c = 'C'+str(randint(1,90000))
             
             codigo_p = nueva_compra['codigo_producto']
             comprador = nueva_compra['usuario_comprador']
@@ -76,7 +75,8 @@ class RegistrarProducto(Resource):
             cursor = conn.cursor()
 
             nuevo_producto = request.get_json()
-            codigo = nuevo_producto['codigo']
+            codigo = 'P'+str(randint(1,90000))
+
             usuario = nuevo_producto['usuario']
             nombre = nuevo_producto['nombre']
             precio = nuevo_producto['precio']

@@ -2,7 +2,7 @@ from app import db
 from flask import jsonify, request
 from flask_restful import Resource
 
-class Vender(Resource):
+class Productos(Resource):
     def post(self):
         try:
             conn = db.connect()
@@ -10,6 +10,7 @@ class Vender(Resource):
 
             producto_u = request.get_json()
             usuario_l = producto_u['usuario']
+
             query = "SELECT * FROM proyecto.producto WHERE usuario_p = %s"
             cursor.execute(query, (usuario_l,))
             productos_l = cursor.fetchall()

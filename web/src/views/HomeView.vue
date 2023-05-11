@@ -7,9 +7,9 @@
       </div>
     </div>
     <nav>
-      <router-link to="/compras">Comprar</router-link> |
-      <router-link to="/ventas">Inventario</router-link> |
-      <router-link to="/inventario">Compras</router-link> <br>
+      <router-link to="/comprar">Comprar</router-link> |
+      <router-link to="/productos">Mis productos</router-link> |
+      <router-link to="/inventario">Mis compras</router-link> <br>
       <router-link to="/">Logout</router-link>
     </nav>
   </template>

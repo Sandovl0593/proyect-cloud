@@ -1,8 +1,5 @@
 <template>
     <div>
-      <label>Codigo</label>
-      <input type="text" v-bind:value="codigo" v-on:input="registrar_codigo"><br>
-      <br>
       <label>Nombre</label>
       <input type="text" v-bind:value="nombre" v-on:input="registrar_nombre"><br>
       <br>
@@ -34,10 +31,7 @@
     },
     methods: {
       productos(){
-        this.$router.push('/ventas')
-      },
-      registrar_codigo(e){
-        this.codigo = e.target.value
+        this.$router.push('/productos')
       },
       registrar_nombre(e){
         this.nombre = e.target.value
@@ -52,7 +46,7 @@
         this.tipo = e.target.value
       },
       async registrar_producto(){
-        let n_producto = {codigo: this.codigo, usuario: this.usuario_nombre, nombre: this.nombre,
+        let n_producto = {usuario: this.usuario_nombre, nombre: this.nombre,
           precio: this.precio, marca: this.marca, categoria: this.tipo}
         await fetch('http://127.0.0.1:8001/utecshop/registrar_producto', {
           method: 'POST',
