@@ -60,9 +60,11 @@
         this.contrasenha = e.target.value
       },
       async registrar_usuario(){
+        const apiUrl = import.meta.env.VITE_API_URL;
+
         let n_usuario =  {nombre_usuario: this.nombre_usuario, nombre: this.nombre, telefono: this.telefono, direccion: this.direccion,
            email: this.email, contrasenha: this.contrasenha}
-        await fetch('http://127.0.0.1:8000/utecshop/register', {
+        await fetch(`http://${apiUrl}:8000/utecshop/register`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

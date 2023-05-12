@@ -35,8 +35,10 @@ export default {
       this.contrasenha = e.target.value
     },
     async verificar_usuario(){
+      const apiUrl = import.meta.env.VITE_API_URL;
+
       let v_usuario = {nombre_usuario: this.nombre_usuario, contrasenha: this.contrasenha}
-      await fetch('http://127.0.0.1:8000/utecshop/login', {
+      await fetch(`http://${apiUrl}:8000/utecshop/login`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

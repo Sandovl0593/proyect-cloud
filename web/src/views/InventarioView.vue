@@ -28,8 +28,10 @@
     },
     methods: {
       async obtener_compras(){
+        const apiUrl = import.meta.env.VITE_API_URL;
+
         let usuario_c = {usuario: this.$store.state.mi_usuario}
-        await fetch('http://127.0.0.1:8081/utecshop/inventario', {
+        await fetch(`http://${apiUrl}:8081/utecshop/inventario`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

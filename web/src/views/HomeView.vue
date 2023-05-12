@@ -24,7 +24,9 @@
     },
     methods: {
       async obtener_usuarios(){
-        await fetch('http://127.0.0.1:8000/utecshop/usuarios')
+        const apiUrl = import.meta.env.VITE_API_URL;
+
+        await fetch(`http://${apiUrl}:8000/utecshop/usuarios`)
             .then((resp) => resp.json()).then((datos) => this.usuarios = datos)
       }
     },

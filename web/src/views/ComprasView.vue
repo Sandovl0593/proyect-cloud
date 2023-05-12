@@ -38,7 +38,9 @@
         let usuario_p = {
           usuario: this.$store.state.mi_usuario
         }
-        await fetch('http://127.0.0.1:8001/utecshop/tienda', {
+        const apiUrl = import.meta.env.VITE_API_HOST;
+        
+        await fetch(`http://${apiUrl}:8001/utecshop/tienda`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
@@ -52,7 +54,7 @@
             usuario_comprador: this.$store.state.mi_usuario,
             usuario_vendedor: usuario_v
         }
-        await fetch('http://127.0.0.1:8001/utecshop/registrar_compra', {
+        await fetch(`http://${apiUrl}:8001/utecshop/registrar_compra`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
