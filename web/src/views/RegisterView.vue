@@ -60,7 +60,7 @@
         this.contrasenha = e.target.value
       },
       async registrar_usuario(){
-        const apiUrl = import.meta.env.VITE_API_URL;
+        const apiUrl = import.meta.env.VITE_API_HOST;
 
         let n_usuario =  {nombre_usuario: this.nombre_usuario, nombre: this.nombre, telefono: this.telefono, direccion: this.direccion,
            email: this.email, contrasenha: this.contrasenha}

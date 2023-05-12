@@ -24,7 +24,7 @@
     },
     methods: {
       async obtener_usuarios(){
-        const apiUrl = import.meta.env.VITE_API_URL;
+        const apiUrl = import.meta.env.VITE_API_HOST;
 
         await fetch(`http://${apiUrl}:8000/utecshop/usuarios`)
             .then((resp) => resp.json()).then((datos) => this.usuarios = datos)

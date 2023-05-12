@@ -33,7 +33,7 @@
     },
     methods: {
       async obtener_productos(){
-        const apiUrl = import.meta.env.VITE_API_URL;
+        const apiUrl = import.meta.env.VITE_API_HOST;
 
         let usuario_p = {usuario: this.$store.state.mi_usuario}
         await fetch(`http://${apiUrl}:8081/utecshop/productos`, {
