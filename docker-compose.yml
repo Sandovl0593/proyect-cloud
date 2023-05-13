@@ -2,25 +2,25 @@ version: '3.3'
 
 services:
   microservice1:
-     build: ./microservice1
-     image: adrsandoval/microservice1
+     build: ./api-usuarios
+     image: api-usuarios
      ports:
        - 8000:8000
 
   microservice2:
-     build: ./microservice2
-     image: adrsandoval/microservice2
+     build: ./api-compra-venta
+     image: api-compra-venta
      ports:
        - 8001:8001
 
   microservice3:
-     build: ./microservice3
-     image: adrsandoval/microservice3
+     build: ./api-productos
+     image: api-productos
      ports:
        - 8081:8081
 
   web:
-     build: ./web
-     image: adrsandoval/proy-web
+     build: ./frontend
+     image: frontend
      ports:
        - 8080:8080

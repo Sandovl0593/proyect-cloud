@@ -1,6 +1,6 @@
 #!/bin/bash
 
-imagenes=("proy-web" "usuarios" "compra-venta" "productos")
+imagenes=("frontend" "api-usuarios" "api-compra-venta" "api-productos")
 
 for imagen in "${imagenes[@]}"
 do
