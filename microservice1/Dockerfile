@@ -1,6 +1,6 @@
 FROM python:3-slim
 
-WORKDIR /microservice1/app
+WORKDIR /api-usuarios/app
 
 RUN pip3 install flask
 RUN pip3 install flask-Cors

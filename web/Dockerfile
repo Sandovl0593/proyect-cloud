@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR /web/app
+WORKDIR /frontend/app
 
 # Ejecuta solo por primera y unica vez
 COPY package*.json ./

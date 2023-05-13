@@ -1,25 +1,25 @@
 version: '3.3'
 
 services:
-  microservice1:
+  api-usuarios:
      build: ./api-usuarios
      image: api-usuarios
      ports:
        - 8000:8000
 
-  microservice2:
+  api-compra-venta:
      build: ./api-compra-venta
      image: api-compra-venta
      ports:
        - 8001:8001
 
-  microservice3:
+  api-productos:
      build: ./api-productos
      image: api-productos
      ports:
        - 8081:8081
 
-  web:
+  frontend:
      build: ./frontend
      image: frontend
      ports:
