@@ -26,11 +26,9 @@ class RegistrarCompra(Resource):
             conn.commit()
 
             response = jsonify(message='Compra agregada exitosamente.', id=cursor.lastrowid)
-            response.status_code = 200
 
         except Exception:
             response = jsonify(message='No se pudo agregar la compra.')
-            response.status_code = 400
 
         finally:
             cursor.close()
@@ -39,7 +37,7 @@ class RegistrarCompra(Resource):
 
 
 class Tienda(Resource):
-    def post(self):
+    def get(self):
         try:
             conn = db.connect()
             cursor = conn.cursor()
@@ -57,11 +55,9 @@ class Tienda(Resource):
                 productos_d.append(producto_d)
             
             response = jsonify(productos_d)
-            response.status_code = 200
 
         except Exception:
-            response = jsonify(message='Failed to get productos.')
-            response.status_code = 400
+            response = jsonify(message='No se puede visualizar los productos.')
 
         finally:
             cursor.close()
@@ -90,11 +86,9 @@ class RegistrarProducto(Resource):
             conn.commit()
 
             response = jsonify(message='Producto agregado exitosamente.', id=cursor.lastrowid)
-            response.status_code = 200
 
         except Exception:
             response = jsonify(message='No se pudo agregar el producto.')
-            response.status_code = 400
 
         finally:
             cursor.close()

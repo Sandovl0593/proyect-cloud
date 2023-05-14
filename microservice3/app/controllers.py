@@ -17,16 +17,14 @@ class Productos(Resource):
 
             productos_d = []
             for i in productos_l:
-                producto_d = {"codigo": i[0], "nombre": i[2], "precio": i[3], "marca": i[4], "categoria": i[5]}
+                producto_d = {"codigo": i[0], "nombre": i[2], "precio": i[3], 
+                              "marca": i[4], "categoria": i[5]}
                 productos_d.append(producto_d)
 
             response = jsonify(productos_d)
-            response.status_code = 200
 
-        except Exception as e:
+        except Exception:
             response = jsonify(message='Failed to get productos.')
-            response.status_code = 400
-            print(e)
 
         finally:
             cursor.close()
@@ -42,24 +40,23 @@ class Inventario(Resource):
             compra_u = request.get_json()
             usuario_l = compra_u['usuario']
 
-            query = "SELECT * FROM proyecto.compra WHERE usuario_c = %s"
+            query = """SELECT c.codigo_c, p.nombre, p.precio, c.usuario_v 
+                    FROM proyecto.compra c, proyecto.producto p 
+                    WHERE c.usuario_c = %s AND c.codigo_p = p.codigo_p"""
 
             cursor.execute(query, (usuario_l,))
             compras_l = cursor.fetchall()
 
             compras_d = []
             for i in compras_l:
-                compra_d = {"codigo_c": i[0], "codigo_p": i[1],
-                            "usuario_c": i[2], "usuario_v": i[3]}
+                compra_d = {"codigo_c": i[0], "nombre": i[1],
+                            "precio": i[2], "usuario_v": i[3]}
                 compras_d.append(compra_d)
 
             response = jsonify(compras_d)
-            response.status_code = 200
 
-        except Exception as e:
+        except Exception:
             response = jsonify(message='No se pudo obtener el inventario.')
-            response.status_code = 400
-            print(e)
 
         finally:
             cursor.close()

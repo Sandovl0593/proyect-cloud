@@ -109,11 +109,9 @@ class Register(Resource):
             conn.commit()
 
             response = jsonify(message='Usuario added successfully.', id=cursor.lastrowid)
-            response.status_code = 200
 
         except Exception:
             response = jsonify(message='Failed to add usuario.')
-            response.status_code = 400
 
         finally:
             cursor.close()

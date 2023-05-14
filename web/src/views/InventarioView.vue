@@ -3,12 +3,14 @@
       <table>
         <tr>
           <th>Numero de compra</th>
-          <th>Codigo de producto</th>
+          <th>Producto</th>
+          <th>Precio</th>
           <th>Vendedor</th>
         </tr>
         <tr v-for="compra of compras" v-bind:key="compra">
           <td>{{compra.codigo_c}}</td>
-          <td>{{compra.codigo_p}}</td>
+          <td>{{compra.nombre}}</td>
+          <td>S/ {{compra.precio}}</td>
           <td>{{compra.usuario_v}}</td>
         </tr>
       </table>
