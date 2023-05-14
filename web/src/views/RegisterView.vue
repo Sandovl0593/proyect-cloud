@@ -1,81 +1,124 @@
 <template>
-    <div>
+  <div class="global">
+  <div class="register-container">
+    <h2>Registro</h2>
+    <div class="form-group">
       <label>Nombre</label>
-      <input type="text" v-bind:value="nombre" v-on:input="registrar_nombre"><br>
-      <br>
-      <label>Telefono</label>
-      <input type="text" v-bind:value="telefono" v-on:input="registrar_telefono"><br>
-      <br>
-      <label>Dirección</label>
-      <input type="text" v-bind:value="direccion" v-on:input="registrar_direccion"><br>
-      <br>
-      <label>Usuario</label>
-      <input type="text" v-bind:value="nombre_usuario" v-on:input="registrar_nusuario"><br>
-      <br>
-      <label>Email</label>
-      <input type="text" v-bind:value="email" v-on:input="registrar_email"><br>
-      <br>
-      <label>Contrasenha</label>
-      <input type="password" v-bind:value="contrasenha" v-on:input="registrar_contrasenha"><br>
-      <br>
-      <button v-on:click="registrar_usuario">Registrar</button>
+      <input type="text" v-model="nombre" class="form-control">
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "RegisterView",
-    data(){
-      return {
-        nombre: "",
-        telefono: "",
-        direccion: "",
-        nombre_usuario: "",
-        email: "",
-        contrasenha: ""
-      }
-    },
-    methods: {
-      casa(){
-        this.$store.dispatch("accion_act_usuario", this.nombre_usuario)
-        this.$store.dispatch("accion_act_contra", this.contrasenha)
-        this.$router.push('/home')
-      },
-      registrar_nombre(e){
-        this.nombre = e.target.value
-      },
-      registrar_telefono(e){
-        this.telefono = e.target.value
-      },
-      registrar_direccion(e){
-        this.direccion = e.target.value
-      },
-      registrar_nusuario(e){
-        this.nombre_usuario = e.target.value
-      },
-      registrar_email(e){
-        this.email = e.target.value
-      },
-      registrar_contrasenha(e){
-        this.contrasenha = e.target.value
-      },
-      async registrar_usuario(){
-        const apiUrl = import.meta.env.VITE_API_HOST;
+    <div class="form-group">
+      <label>Teléfono</label>
+      <input type="text" v-model="telefono" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Dirección</label>
+      <input type="text" v-model="direccion" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Usuario</label>
+      <input type="text" v-model="nombre_usuario" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" v-model="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" v-model="contrasenha" class="form-control">
+    </div>
+    <button v-on:click="registrar_usuario" class="btn btn-primary">Registrar</button>
+  </div>
+  </div>
+</template>
 
-        let n_usuario =  {nombre_usuario: this.nombre_usuario, nombre: this.nombre, telefono: this.telefono, direccion: this.direccion,
-           email: this.email, contrasenha: this.contrasenha}
-        await fetch(`http://${apiUrl}:8000/utecshop/register`, {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify(n_usuario)
-        }).then(this.casa)
-      }
+<script>
+export default {
+  name: "RegisterView",
+  data() {
+    return {
+      nombre: "",
+      telefono: "",
+      direccion: "",
+      nombre_usuario: "",
+      email: "",
+      contrasenha: ""
+    }
+  },
+  methods: {
+    registrar_usuario() {
+      // Lógica de registro de usuario
     }
   }
-  </script>
+}
+</script>
+
+<style scoped>
+
+.global{
+  background-image: url('../assets/rojaso.jpeg');
+  background-size: cover;
+  height: 100vh;
+ 
+}
+
+.register-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #EFEFEF;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #EFEFEF;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   
-  <style scoped>
+
+}
+
+.form-control:focus {
+  outline: none;
   
-  </style>
+}
+
+
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 19px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+</style>
