@@ -11,6 +11,7 @@
         <router-link to="/productos" class="button">Mis productos</router-link>
         <router-link to="/inventario" class="button">Mis compras</router-link>
         <router-link to="/" class="button">Logout</router-link>
+        <button v-on:click="active=true">Nuestros usuarios</button>
       </div>
     </div>
   </div>
@@ -65,14 +66,13 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      usuarios: []
+      usuarios: [],
+      active: false
     };
   },
   methods: {
     async obtenerUsuarios() {
-      const apiUrl = import.meta.env.VITE_API_HOST;
-
-      await fetch(`http://${apiUrl}:8000/utecshop/usuarios`)
+      await fetch(`http://localhost:8000/utecshop/usuarios`)
         .then((resp) => resp.json())
         .then((datos) => (this.usuarios = datos));
     }

@@ -4,27 +4,27 @@
     <h2>Registro</h2>
     <div class="form-group">
       <label>Nombre</label>
-      <input type="text" v-model="nombre" class="form-control">
+      <input type="text" v-model="nombre" v-on:input="registrar_nombre" class="form-control">
     </div>
     <div class="form-group">
       <label>Teléfono</label>
-      <input type="text" v-model="telefono" class="form-control">
+      <input type="text" v-model="telefono" v-on:input="registrar_telefono" lass="form-control">
     </div>
     <div class="form-group">
       <label>Dirección</label>
-      <input type="text" v-model="direccion" class="form-control">
+      <input type="text" v-model="direccion" v-on:input="registrar_direccion" class="form-control">
     </div>
     <div class="form-group">
       <label>Usuario</label>
-      <input type="text" v-model="nombre_usuario" class="form-control">
+      <input type="text" v-model="nombre_usuario" v-on:input="registrar_nusuario" class="form-control">
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="text" v-model="email" class="form-control">
+      <input type="text" v-model="email" v-on:input="registrar_email" class="form-control">
     </div>
     <div class="form-group">
       <label>Contraseña</label>
-      <input type="password" v-model="contrasenha" class="form-control">
+      <input type="password" v-model="contrasenha" v-on:input="registrar_contrasenha" class="form-control">
     </div>
     <button v-on:click="registrar_usuario" class="btn btn-primary">Registrar</button>
   </div>
@@ -45,9 +45,40 @@ export default {
     }
   },
   methods: {
-    registrar_usuario() {
-      // Lógica de registro de usuario
-    }
+    casa(){
+        this.$store.dispatch("accion_act_usuario", this.nombre_usuario)
+        this.$store.dispatch("accion_act_contra", this.contrasenha)
+        this.$router.push('/home')
+      },
+      registrar_nombre(e){
+        this.nombre = e.target.value
+      },
+      registrar_telefono(e){
+        this.telefono = e.target.value
+      },
+      registrar_direccion(e){
+        this.direccion = e.target.value
+      },
+      registrar_nusuario(e){
+        this.nombre_usuario = e.target.value
+      },
+      registrar_email(e){
+        this.email = e.target.value
+      },
+      registrar_contrasenha(e){
+        this.contrasenha = e.target.value
+      },
+      async registrar_usuario(){
+        let n_usuario =  {nombre: this.nombre, telefono: this.telefono, direccion: this.direccion,
+          nombre_usuario: this.nombre_usuario, email: this.email, contrasenha: this.contrasenha}
+        await fetch('http://localhost:8000/utecshop/register', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(n_usuario)
+        }).then(this.casa)
+      }
   }
 }
 </script>

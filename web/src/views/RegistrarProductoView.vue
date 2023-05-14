@@ -46,11 +46,9 @@
         this.tipo = e.target.value
       },
       async registrar_producto(){
-        const apiUrl = import.meta.env.VITE_API_HOST;
-
         let n_producto = {usuario: this.usuario_nombre, nombre: this.nombre,
           precio: this.precio, marca: this.marca, categoria: this.tipo}
-        await fetch(`http://${apiUrl}:8001/utecshop/registrar_producto`, {
+        await fetch(`http://localhost:8001/utecshop/registrar_producto`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'
