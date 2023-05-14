@@ -61,7 +61,7 @@ export default {
 <style scoped>
 
 .global{
-  background-image: url('../assets/rojaso.jpeg');
+  background-image: url('../assets/foto1.jpg');
   background-size: cover;
   height: 100vh;
  
@@ -102,15 +102,21 @@ label {
   border-radius: 19px;
   cursor: pointer;
   font-size: 18px;
-  background-color: #007bff;
-  color: white;
+  background-color: #000000;
+  color:#fff;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #7F7F7F;
 }
 
 nav a {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 19px;
+  cursor: pointer;
+  font-size: 18px;
+  background-color: #000000;
   color: #fff; /* Cambia el color del enlace "Registrarse" a blanco */
 }
 </style>

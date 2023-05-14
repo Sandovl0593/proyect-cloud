@@ -1,26 +1,30 @@
 <template>
-    <div>
-      <table>
+  <div class="ventas">
+    <table class="table">
+      <thead>
         <tr>
-          <th>Codigo</th>
-          <th>nombre</th>
+          <th>Código</th>
+          <th>Nombre</th>
           <th>Precio</th>
           <th>Marca</th>
-          <th>Categoria</th>
+          <th>Categoría</th>
         </tr>
-        <tr v-for="producto of productos" v-bind:key="producto">
-          <td>{{producto.codigo}}</td>
-          <td>{{producto.nombre}}</td>
-          <td>S/ {{producto.precio}}</td>
-          <td>{{producto.marca}}</td>
-          <td>{{producto.categoria}}</td>
+      </thead>
+      <tbody>
+        <tr v-for="producto of productos" :key="producto.codigo">
+          <td>{{ producto.codigo }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>S/ {{ producto.precio }}</td>
+          <td>{{ producto.marca }}</td>
+          <td>{{ producto.categoria }}</td>
         </tr>
-      </table>
-    </div>
-    <nav>
-      <router-link to="/registrar_producto">Registrar producto</router-link> |
-      <router-link to="/home">Casa</router-link>
-    </nav>
+      </tbody>
+    </table>
+  </div>
+  <nav>
+    <router-link to="/registrar_producto">Registrar producto</router-link> |
+    <router-link to="/home">Casa</router-link>
+  </nav>
   </template>
   
   <script>
@@ -43,14 +47,42 @@
         }).then((resp)=> resp.json()).then((datos)=> this.productos = datos)
       }
     },
-    created(){
-      this.obtener_productos()
-    }
+  created() {
+    this.obtener_productos();
   }
-  </script>
-  
-  <style scoped>
-  table{
-    padding-left: 575px;
-  }
-  </style>
+}
+</script>
+
+<style scoped>
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+nav a {
+  margin-right: 10px;
+  color: #000;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+</style>
