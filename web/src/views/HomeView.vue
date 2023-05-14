@@ -11,7 +11,6 @@
         <router-link to="/productos" class="button">Mis productos</router-link>
         <router-link to="/inventario" class="button">Mis compras</router-link>
         <router-link to="/" class="button">Logout</router-link>
-        <button v-on:click="active=true">Nuestros usuarios</button>
       </div>
     </div>
   </div>
@@ -66,8 +65,7 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      usuarios: [],
-      active: false
+      usuarios: []
     };
   },
   methods: {
