@@ -37,7 +37,7 @@ class RegistrarCompra(Resource):
 
 
 class Tienda(Resource):
-    def get(self):
+    def post(self):
         try:
             conn = db.connect()
             cursor = conn.cursor()
