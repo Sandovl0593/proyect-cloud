@@ -85,21 +85,23 @@ export default {
 
 <style scoped>
 
-.global{
-  background-image: url('../assets/rojaso.jpeg');
+.global {
+  background-image: url('../assets/foto2.jpg');
   background-size: cover;
   height: 100vh;
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-container {
-  max-width: 400px;
+  width: 25%;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  border-radius: 5px;
-  background-size: cover;
-  background-position: center;
-
+  padding: 100px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
 }
 
 h2 {
@@ -124,16 +126,11 @@ label {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  
-
 }
 
 .form-control:focus {
   outline: none;
-  
 }
-
-
 
 .btn {
   padding: 10px 20px;
