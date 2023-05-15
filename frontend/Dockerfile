@@ -1,0 +1,10 @@
+FROM node:19-slim
+
+WORKDIR /frontend/app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "dev"]
