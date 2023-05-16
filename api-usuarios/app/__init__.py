@@ -15,7 +15,7 @@ api = Api(app)
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'utec'
 app.config['MYSQL_DATABASE_DB'] = 'proyecto'
-app.config['MYSQL_DATABASE_HOST'] = '54.174.164.65'
+app.config['MYSQL_DATABASE_HOST'] = ''
 app.config['MYSQL_DATABASE_PORT'] = 8005
 
 #Initialize the MySQL extension
