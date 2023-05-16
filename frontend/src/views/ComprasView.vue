@@ -45,7 +45,7 @@ export default {
       let usuario_p = {
         usuario: this.$store.state.mi_usuario
       };
-      await fetch(`http://localhost:8001/utecshop/tienda`, {
+      await fetch(`http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8001/utecshop/tienda`, {
         method: "POST",
         headers: {
           "Content-type": "application/json"
@@ -61,7 +61,7 @@ export default {
         usuario_comprador: this.$store.state.mi_usuario,
         usuario_vendedor: usuario_v
       };
-      await fetch(`http://localhost:8001/utecshop/registrar_compra`, {
+      await fetch(`http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8001/utecshop/registrar_compra`, {
         method: "POST",
         headers: {
           "Content-type": "application/json"

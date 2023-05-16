@@ -50,7 +50,7 @@ export default {
         marca: this.marca,
         categoria: this.categoria
       };
-      fetch(`http://localhost:8001/utecshop/registrar_producto`, {
+      fetch(`http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8001/utecshop/registrar_producto`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

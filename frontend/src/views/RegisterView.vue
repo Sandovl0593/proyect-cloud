@@ -71,7 +71,7 @@ export default {
       async registrar_usuario(){
         let n_usuario =  {nombre: this.nombre, telefono: this.telefono, direccion: this.direccion,
           nombre_usuario: this.nombre_usuario, email: this.email, contrasenha: this.contrasenha}
-        await fetch('http://localhost:8000/utecshop/register', {
+        await fetch('http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8000/utecshop/register', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

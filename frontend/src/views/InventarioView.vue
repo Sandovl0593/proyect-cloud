@@ -37,7 +37,7 @@
     methods: {
       async obtener_compras(){
         let usuario_c = {usuario: this.$store.state.mi_usuario}
-        await fetch(`http://localhost:8081/utecshop/inventario`, {
+        await fetch(`http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8081/utecshop/inventario`, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

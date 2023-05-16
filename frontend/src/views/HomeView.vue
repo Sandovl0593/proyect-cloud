@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     async obtenerUsuarios() {
-      await fetch(`http://localhost:8000/utecshop/usuarios`)
+      await fetch(`http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8000/utecshop/usuarios`)
         .then((resp) => resp.json())
         .then((datos) => (this.usuarios = datos));
     }

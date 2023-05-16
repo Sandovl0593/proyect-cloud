@@ -114,8 +114,10 @@ class Register(Resource):
             response = jsonify(message='Failed to add usuario.')
 
         finally:
-            cursor.close()
-            conn.close()
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
             return response
         
 class Login(Resource):
@@ -142,6 +144,8 @@ class Login(Resource):
             response.status_code = 400
 
         finally:
-            cursor.close()
-            conn.close()
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
             return response

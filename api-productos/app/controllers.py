@@ -27,8 +27,10 @@ class Productos(Resource):
             response = jsonify(message='Failed to get productos.')
 
         finally:
-            cursor.close()
-            conn.close()
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
             return response
         
 class Inventario(Resource):
@@ -59,6 +61,8 @@ class Inventario(Resource):
             response = jsonify(message='No se pudo obtener el inventario.')
 
         finally:
-            cursor.close()
-            conn.close()
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
             return response

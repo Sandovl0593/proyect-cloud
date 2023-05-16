@@ -40,7 +40,7 @@ export default {
   methods: {
     async obtener_productos() {
       let usuario_p = { usuario: this.$store.state.mi_usuario };
-      await fetch(`http://localhost:8081/utecshop/productos`, {
+      await fetch(`http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8081/utecshop/productos`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -86,6 +86,10 @@ export default {
 .table th {
   background-color: #f2f2f2;
   font-weight: bold;
+}
+
+tbody {
+  background: rgb(255, 255, 255, 0.5);
 }
 
 nav {

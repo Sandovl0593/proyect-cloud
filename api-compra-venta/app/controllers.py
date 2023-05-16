@@ -31,8 +31,10 @@ class RegistrarCompra(Resource):
             response = jsonify(message='No se pudo agregar la compra.')
 
         finally:
-            cursor.close()
-            conn.close()
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
             return response
 
 
@@ -60,8 +62,10 @@ class Tienda(Resource):
             response = jsonify(message='No se puede visualizar los productos.')
 
         finally:
-            cursor.close()
-            conn.close()
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
             return response
         
 class RegistrarProducto(Resource):
@@ -91,6 +95,8 @@ class RegistrarProducto(Resource):
             response = jsonify(message='No se pudo agregar el producto.')
 
         finally:
-            cursor.close()
-            conn.close()
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
             return response

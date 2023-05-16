@@ -18,10 +18,3 @@ services:
      image: api-productos
      ports:
        - 8081:8081
-
-  frontend:
-     build: ./frontend
-     image: frontend
-     ports:
-       - 80:80
-

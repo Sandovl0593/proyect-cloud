@@ -40,7 +40,7 @@ export default {
     },
     async verificar_usuario() {
       let v_usuario = { nombre_usuario: this.nombre_usuario, contrasenha: this.contrasenha };
-      await fetch(`http://localhost:8000/utecshop/login`, {
+      await fetch(`http://LB-ProyParcial-1528179989.us-east-1.elb.amazonaws.com:8000/utecshop/login`, {
         method: "POST",
         headers: {
           "Content-type": "application/json"
