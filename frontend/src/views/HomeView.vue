@@ -58,6 +58,7 @@ h2 {
   border-radius: 15px;
   font-family: 'BebasNeue-Regular', sans-serif;
   font-size: 18px;
+  transition: background-color 0.3s ease;
 }
 
 

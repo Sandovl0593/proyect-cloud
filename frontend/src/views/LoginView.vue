@@ -104,6 +104,7 @@ label {
   font-size: 18px;
   background-color: #000000;
   color:#fff;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {

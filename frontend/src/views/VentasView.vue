@@ -62,6 +62,7 @@ export default {
 .page-background {
   background-image: url('../assets/fondotablas.jpg');
   background-size: cover;
+  opacity: 0.9;
   background-position: center;
   height: 100vh;
 }
@@ -76,37 +77,42 @@ export default {
   margin-bottom: 20px;
 }
 
-.table th,
-.table td {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.table th {
+th,
+td {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  color: #000000;
+}
+
+th {
   background-color: #f2f2f2;
   font-weight: bold;
 }
+
 
 tbody {
   background: rgb(255, 255, 255, 0.5);
 }
 
-nav {
-  margin-top: 20px;
-}
-
-nav a {
-  margin-right: 10px;
+nav a.button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
   color: #fff;
   text-decoration: none;
-  background-color: #000;
-  padding: 8px 16px;
-  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #333;
+  background-color: #0056b3;
 }
 
 .button:active {

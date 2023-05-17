@@ -99,34 +99,9 @@ th {
   background-color: #f2f2f2;
 }
 
-button.comprar-button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button.comprar-button:hover {
-  background-color: #0056b3;
-}
-
 nav {
   margin-top: 20px;
 }
-
-nav a.casa-link {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
 
 nav a.casa-link {
   padding: 5px 10px;
@@ -146,6 +121,7 @@ nav a.casa-link:hover {
   position: relative;
   background-image: url('../assets/fondotablas.jpg');
   background-size: cover;
+  opacity: 0.9;
   height: 100vh;
 }
 

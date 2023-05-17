@@ -56,6 +56,7 @@
 .global {
   position: relative;
   background-image: url('../assets/fondotablas.jpg');
+  opacity: 0.9;
   background-size: cover;
   height: 100vh;
 }
@@ -94,22 +95,33 @@
   text-align: center;
 }
 
-.button {
-  display: inline-block;
-  margin: 10px;
-  padding: 14px 30px;
-  background-color: #000;
+
+nav .button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
   color: #fff;
   text-decoration: none;
-  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+
+nav .button {
+  padding: 5px 10px;
+  border: none;
   font-family: 'BebasNeue-Regular', sans-serif;
   font-size: 18px;
-  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #555;
+  background-color: #0056b3;
 }
 
 .button:active {
